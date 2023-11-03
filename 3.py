@@ -12,10 +12,22 @@ def part_one(input):
         total += match
     print(total)
 
-
-
 def part_two(input):
-    pass
+    total = 0
+    i = 0
+    group = []
+    for line in input.split("\n"):
+        group.append(line)
+        if len(group) == 3:
+            e = ord(min(set.intersection(set(group[0]), set(group[1]), set(group[2]))))
+            if e > 97:
+                e = e - 96
+            else:
+                e = e - 38
+            total += e
+            group = []
+    print(total)
+
 
 def main():
     with open("input_3") as file:
